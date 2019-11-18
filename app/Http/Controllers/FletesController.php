@@ -14,7 +14,7 @@ class FletesController extends Controller
      */
     public function index()
     {
-        //
+        return view('fletes.index');         
     }
 
     /**
@@ -24,7 +24,7 @@ class FletesController extends Controller
      */
     public function create()
     {
-        //
+        return view('fletes.create');
     }
 
     /**
@@ -35,7 +35,9 @@ class FletesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datosFletes=request()->all();
+
+        return response()->json($datosFletes);
     }
 
     /**
@@ -57,7 +59,7 @@ class FletesController extends Controller
      */
     public function edit(Fletes $fletes)
     {
-        //
+        return view('fletes.edit');        
     }
 
     /**

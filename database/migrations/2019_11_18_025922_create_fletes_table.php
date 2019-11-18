@@ -15,6 +15,17 @@ class CreateFletesTable extends Migration
     {
         Schema::create('fletes', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nombre');
+            $table->string('correo');
+            $table->string('telefono');
+            $table->string('celular');
+            $table->string('direccion');
+            //fecha de registro
+            $table->dateTime('fecha_registro');
+            $table->text('comentario');
+            //enviado
+            $table->string('fotoveh');
+            $table->tinyInteger('flag');
             $table->timestamps();
         });
     }

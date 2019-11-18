@@ -24,8 +24,8 @@ class CreateClientsTable extends Migration
             $table->dateTime('fecha_registro');
             $table->text('comentario');
             //enviado
+            $table->string('foto');
             $table->tinyInteger('flag');
-            
             $table->timestamps();
         });
     }

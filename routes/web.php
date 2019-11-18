@@ -20,3 +20,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/datepicker','HomeController@datepicker')->name('datepicker');
+
+//Route::get('/fletes', 'FletesController@index')->name('index');
+
+//Route::get('/fletes/create', 'FletesController@create')->name('create');
+
+//Route::get('/fletes/edit', 'FletesController@edit')->name('edit');
+
+Route::resource('fletes','FletesController');
