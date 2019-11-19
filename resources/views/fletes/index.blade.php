@@ -29,7 +29,19 @@
 				<td>{{ $flete->direccion }}</td>
 				<td>{{ $flete->fecha_registro }}</td>
 				<td>{{ $flete->comentario }}</td>
-				<td>Editar | Borrar</td>
+				<td>
+				<a href="{{ url('/fletes/'.$flete->id.'/edit') }}">
+					Editar
+				</a>	
+					 | 
+
+				<form method="POST" action="{{ url('/fletes/'.$flete->id) }}" >
+					@csrf
+					@method('DELETE')
+					<button type="submit" onclick="return confirm('Borrar?')">Borrar</button>
+				</form>	
+				</td>
+					
 			</tr>
 		@endforeach	
 		</tbody>

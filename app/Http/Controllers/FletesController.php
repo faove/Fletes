@@ -69,9 +69,11 @@ class FletesController extends Controller
      * @param  \App\Fletes  $fletes
      * @return \Illuminate\Http\Response
      */
-    public function edit(Fletes $fletes)
+    public function edit($id)
     {
-        return view('fletes.edit');        
+        
+        $flete = Fletes::findOrFail($id);
+        return view('fletes.edit',compact('flete'));        
     }
 
     /**
@@ -81,9 +83,17 @@ class FletesController extends Controller
      * @param  \App\Fletes  $fletes
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Fletes $fletes)
+    public function update(Request $request, $id)
     {
-        //
+
+        $datosFletes=request()->except(['_token','_method']);
+
+        Fletes::where('id','=',$id)->update($datosFletes);
+
+        $flete = Fletes::findOrFail($id);
+
+        return view('fletes.edit',compact('flete'));
+        
     }
 
     /**
@@ -92,8 +102,11 @@ class FletesController extends Controller
      * @param  \App\Fletes  $fletes
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Fletes $fletes)
+    public function destroy($id)
     {
-        //
+        Fletes::destroy($id);
+
+        return redirect('fletes'); 
+
     }
 }
