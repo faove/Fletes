@@ -14,7 +14,9 @@ class FletesController extends Controller
      */
     public function index()
     {
-        return view('fletes.index');         
+
+        $datos['fletes']=Fletes::paginate(5);
+        return view('fletes.index',$datos);         
     }
 
     /**
@@ -35,7 +37,17 @@ class FletesController extends Controller
      */
     public function store(Request $request)
     {
-        $datosFletes=request()->all();
+        //$datosFletes=request()->all();
+
+        $datosFletes=request()->except('_token');
+
+        if ($request->hasFile('fotoveh')){
+
+            $datosFletes['fotoveh']=$request->file('fotoveh')->store('uploads','public');
+
+        }
+
+        Fletes::insert($datosFletes);
 
         return response()->json($datosFletes);
     }
